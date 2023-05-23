@@ -1,4 +1,4 @@
-TARGETBIN=ithings
+TARGETBIN=dashboard
 .PHONY:	all ${TARGETBIN}.exe ${TARGETBIN}
 
 BUILD_ROOT=$(PWD)

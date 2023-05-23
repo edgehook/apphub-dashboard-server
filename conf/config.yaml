@@ -1,5 +1,6 @@
 db:
-  used: "postgre"
+# postgres|sqlite
+  used: "sqlite"
   postgre:
     host: "127.0.0.1"
     port: 5432
@@ -8,6 +9,9 @@ db:
     passwd: "postgres"
     max_idle_conns: 5
     max_open_conns: 10 
+  sqlite:
+    dbpath: "./apphub-dashboard.db"
+    log_level: "info"
 transport:
   mqtt:
     bind: "false"
@@ -18,7 +22,7 @@ transport:
     qos: 0
     usr: 
 webserver:
-  bind_address: ":8082"
+  bind_address: ":8090"
   ssl: false
   ssl_cert_file: ""
   ssl_key_file: "" 

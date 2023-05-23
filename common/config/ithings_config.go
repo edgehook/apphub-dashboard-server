@@ -86,7 +86,7 @@ func GetDBConfig() *DBConfig {
 		}
 
 		dbConfig.Mysql = mysql
-	case "sqlite3":
+	case "sqlite":
 		sq := &SQLite{}
 
 		sq.DbPath = ITHINGS_CONFIG.GetString("db.sqlite.dbpath")

@@ -63,7 +63,7 @@ func GormMysql(config *config.DBConfig) *gorm.DB {
 func GormPostgreSQL(config *config.DBConfig) *gorm.DB {
 	m := config.Postgres
 	if m == nil || m.Dbname == "" {
-		klog.Fatalf("Can't find Mysql database config information")
+		klog.Fatalf("Can't find postgres database config information")
 		return nil
 	}
 
@@ -90,7 +90,7 @@ func GormPostgreSQL(config *config.DBConfig) *gorm.DB {
 func GormSQLite(config *config.DBConfig) *gorm.DB {
 	m := config.SQLite3
 	if m == nil || m.DbPath == "" {
-		klog.Fatalf("Can't find Mysql database config information")
+		klog.Fatalf("Can't find sqlite3 database config information")
 		return nil
 	}
 

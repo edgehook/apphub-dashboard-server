@@ -9,7 +9,9 @@ import (
 * Notice! you should create tables at here!
  */
 func RegisterTables(db *gorm.DB) error {
-	err := db.AutoMigrate(&DeviceModel{})
+	err := db.AutoMigrate(
+		&Project{},
+		&ProjectDetails{})
 	if err != nil {
 		return err
 	}
