@@ -10,8 +10,8 @@ import (
  */
 func RegisterTables(db *gorm.DB) error {
 	err := db.AutoMigrate(
-		&Project{},
-		&ProjectDetails{})
+		&Screen{},
+		&ScreenImage{})
 	if err != nil {
 		return err
 	}

@@ -2,10 +2,10 @@ package webserver
 
 import (
 	"crypto/tls"
-	"github.com/edgehook/ithings/common/config"
-	"github.com/edgehook/ithings/webserver/router"
+	"github.com/edgehook/apphub-dashboard-server/common/config"
+	"github.com/edgehook/apphub-dashboard-server/webserver/router"
 	"github.com/jwzl/beehive/pkg/core"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 	"net/http"
 	"time"
 )
@@ -23,23 +23,23 @@ func Register() {
 	core.Register(ws)
 }
 
-//Name
+// Name
 func (ws *WebServer) Name() string {
 	return WebServerName
 }
 
-//Group
+// Group
 func (ws *WebServer) Group() string {
 	return WebServerName
 }
 
-//Enable indicates whether this module is enabled
+// Enable indicates whether this module is enabled
 func (ws *WebServer) Enable() bool {
 	//The module is always enabled!
 	return true
 }
 
-//Start this module.
+// Start this module.
 func (ws *WebServer) Start() {
 	var err error
 
@@ -53,7 +53,7 @@ func (ws *WebServer) Start() {
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
-
+	klog.Infof("Start web server on %s ", cfg.BindAddress)
 	if cfg.SSL {
 		s.TLSConfig = createServerTLSConfiguration()
 		err = s.ListenAndServeTLS(cfg.SSLCert, cfg.SSLKey)
@@ -65,8 +65,6 @@ func (ws *WebServer) Start() {
 		klog.Errorf("Start web server with error: %v", err)
 		return
 	}
-
-	klog.Infof("Start web server on %s ", cfg.BindAddress)
 }
 
 // createServerTLSConfiguration creates a basic tls.Config to be used by servers with recommended TLS settings

@@ -8,14 +8,14 @@ ${TARGETBIN}:
 	@gofmt -l -w ${BUILD_ROOT}/
 	@export GO111MODULE=on && \
 	export GOPROXY=https://goproxy.io && \
-	go build -ldflags "-w" -o $@ ithings.go
+	go build -ldflags "-w" -o $@ dashboard.go
 	@chmod 777 $@
 	
 ${TARGETBIN}.exe:
 	@gofmt -l -w ${BUILD_ROOT}/
 	@export GO111MODULE=on && \
 	export GOPROXY=https://goproxy.io && \
-	GOARCH=amd64 GOOS="windows" CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -o $@ ithings.go
+	GOARCH=amd64 GOOS="windows" CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -o $@ dashboard.go
 	@chmod 777 $@
 
 install:

@@ -148,7 +148,7 @@ func (c *Config) SetStringSlice(key string, value []string) {
 	c.Config.Set(key, value)
 }
 
-//save config to conf/xx.yaml
+// save config to conf/xx.yaml
 func (c *Config) SaveConfig() error {
 	fileName := c.ConfigPath + "/" + c.ConfigFile
 	return c.Config.WriteConfigAs(fileName)

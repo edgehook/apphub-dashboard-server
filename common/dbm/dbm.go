@@ -1,9 +1,9 @@
 package dbm
 
 import (
-	"github.com/edgehook/ithings/common/config"
-	"github.com/edgehook/ithings/common/dbm/model"
-	"github.com/edgehook/ithings/common/global"
+	"github.com/edgehook/apphub-dashboard-server/common/config"
+	"github.com/edgehook/apphub-dashboard-server/common/dbm/model"
+	"github.com/edgehook/apphub-dashboard-server/common/global"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -27,7 +27,7 @@ func GormInit(config *config.DBConfig) *gorm.DB {
 	}
 }
 
-//GormMysql connect the mysql
+// GormMysql connect the mysql
 func GormMysql(config *config.DBConfig) *gorm.DB {
 	m := config.Mysql
 	if m == nil || m.Dbname == "" {
@@ -59,7 +59,7 @@ func GormMysql(config *config.DBConfig) *gorm.DB {
 	return db
 }
 
-//connect the postgresql
+// connect the postgresql
 func GormPostgreSQL(config *config.DBConfig) *gorm.DB {
 	m := config.Postgres
 	if m == nil || m.Dbname == "" {
@@ -86,7 +86,7 @@ func GormPostgreSQL(config *config.DBConfig) *gorm.DB {
 	return db
 }
 
-//Connect the sqlite3
+// Connect the sqlite3
 func GormSQLite(config *config.DBConfig) *gorm.DB {
 	m := config.SQLite3
 	if m == nil || m.DbPath == "" {

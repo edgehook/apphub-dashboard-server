@@ -22,7 +22,7 @@ transport:
     qos: 0
     usr: 
 webserver:
-  bind_address: ":8090"
+  bind_address: ":8082"
   ssl: false
   ssl_cert_file: ""
   ssl_key_file: "" 
