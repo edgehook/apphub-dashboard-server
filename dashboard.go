@@ -5,17 +5,27 @@ import (
 	"os"
 
 	"github.com/edgehook/apphub-dashboard-server/cmd"
+	"github.com/edgehook/apphub-dashboard-server/common/config"
 	"k8s.io/component-base/logs"
 )
 
 func main() {
 	//initial log.
-	logFile := os.Args[0] + ".log"
-	flag.Set("log_file", logFile)
-	flag.Set("log_file_max_size", "50") //in MB, default as 50MB
-	flag.Set("logtostderr", "false")
-	flag.Set("alsologtostderr", "true")
+	dashboardConfig := config.GetDashboardConfig()
+	logLevel := dashboardConfig.LogLevel
+	fLogger := dashboardConfig.FileLogger
 
+	if fLogger {
+		logFile := os.Args[0] + ".log"
+		flag.Set("log_file", logFile)
+		flag.Set("log_file_max_size", "5") //in MB, default as 1800MB
+		flag.Set("logtostderr", "false")
+		flag.Set("alsologtostderr", "false")
+	} else {
+		flag.Set("logtostderr", "true")
+	}
+
+	flag.Set("v", logLevel)
 	logs.InitLogs()
 	defer logs.FlushLogs()
 

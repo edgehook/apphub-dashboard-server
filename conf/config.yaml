@@ -1,28 +1,8 @@
-db:
-# postgres|sqlite
-  used: "sqlite"
-  postgre:
-    host: "127.0.0.1"
-    port: 5432
-    db_name: "aimlink"
-    usr: "postgres"
-    passwd: "postgres"
-    max_idle_conns: 5
-    max_open_conns: 10 
-  sqlite:
-    dbpath: "./apphub-dashboard.db"
-    log_level: "info"
-transport:
-  mqtt:
-    bind: "false"
-    broker: 
-    clientid: ""
-    encrypt: ""
-    passwd: 
-    qos: 0
-    usr: 
+logger:
+  file_logger: true
+  log_level: info
 webserver:
-  bind_address: ":8082"
+  bind_address: ":8090"
   ssl: false
   ssl_cert_file: ""
   ssl_key_file: "" 

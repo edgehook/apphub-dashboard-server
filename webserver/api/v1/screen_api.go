@@ -141,7 +141,7 @@ func CopyScreen(c *gin.Context) {
 Retry:
 	name = fmt.Sprintf("%s-%s", name, "copy")
 	if isExist := model.IsExistScreenByName(name); isExist {
-		klog.Infof("Screen name: %s already exists", name)
+		klog.V(4).Infof("Screen name: %s already exists", name)
 		goto Retry
 	}
 	state := 0
