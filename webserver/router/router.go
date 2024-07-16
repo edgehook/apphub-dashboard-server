@@ -33,7 +33,7 @@ func InitRouter() *gin.Engine {
 	screenApi.DELETE("/:id", v1.DeleteScreen)
 	var (
 		pwd, _             = os.Getwd()
-		vueAssetsRoutePath = pwd + string(os.PathSeparator) + "frontend" // 前端编译出来的 dist 所在路径
+		vueAssetsRoutePath = path.Join(pwd, "frontend") // 前端编译出来的 dist 所在路径
 	)
 	r.StaticFile("/", path.Join(vueAssetsRoutePath, "index.html"))             // 指定资源文件 url.  127.0.0.1/ 这种
 	r.StaticFile("/favicon.ico", path.Join(vueAssetsRoutePath, "favicon.ico")) // 127.0.0.1/favicon.ico

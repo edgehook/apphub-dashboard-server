@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"os"
+	"runtime"
 
 	"github.com/edgehook/apphub-dashboard-server/cmd"
 	"github.com/edgehook/apphub-dashboard-server/common/config"
@@ -28,8 +29,14 @@ func main() {
 	flag.Set("v", logLevel)
 	logs.InitLogs()
 	defer logs.FlushLogs()
+	sys := runtime.GOOS
 
-	if err := cmd.Execute(); err != nil {
-		os.Exit(1)
+	if sys == "windows" {
+		cmd.NewAppService()
+	} else {
+		if err := cmd.Execute(); err != nil {
+			os.Exit(1)
+		}
 	}
+
 }
