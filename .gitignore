@@ -8,6 +8,8 @@
 *.obj
 *.log
 dashboard
+dashboard-ARM64
+dashboard-ARM
 dashboard.exe
 frontend/
 

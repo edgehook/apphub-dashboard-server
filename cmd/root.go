@@ -48,12 +48,12 @@ func registerModules() {
 
 var logger service.Logger
 var serviceConfig = &service.Config{
-	Name:             "AppHubEdgeService",
-	DisplayName:      "AppHub-Edge Service",
-	Description:      "Advantech AppHub-Edge",
+	Name:             "AppHubDashboardService",
+	DisplayName:      "AppHub-Dashboard Service",
+	Description:      "Advantech AppHub-Dashboard",
 	UserName:         "",
 	Arguments:        []string{},
-	Executable:       "C:\\Program Files\\AppHub-Edge\\AppHub-Edge.exe",
+	Executable:       "C:\\Program Files\\AppHub-Dashboard\\dashboard.exe",
 	Dependencies:     []string{},
 	WorkingDirectory: "",
 	ChRoot:           "",

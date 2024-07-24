@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"os"
+	"path/filepath"
 	"runtime"
 
 	"github.com/edgehook/apphub-dashboard-server/cmd"
@@ -11,6 +12,11 @@ import (
 )
 
 func main() {
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		return
+	}
+	os.Chdir(dir)
 	//initial log.
 	dashboardConfig := config.GetDashboardConfig()
 	logLevel := dashboardConfig.LogLevel
