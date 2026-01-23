@@ -90,6 +90,19 @@ func UpdateScreen(c *gin.Context) {
 		responce.FailWithMessage("Parameter error", c)
 		return
 	}
+	screen, err := model.GetScreenById(screenId)
+	if err != nil {
+		responce.FailWithMessage("Dashboard id is error", c)
+		return
+	}
+
+	if screenData.Name != "" && screen.Name != screenData.Name {
+		if isExist := model.IsExistScreenByName(screenData.Name); isExist {
+			responce.FailWithMessage("Dashboard already exists", c)
+			return
+		}
+	}
+
 	if err := model.SaveScreen(screenId, screenData.Name, screenData.State, screenData.Data, screenData.Image, screenData.IsAside); err != nil {
 		responce.FailWithMessage("Update dashboard error", c)
 		return
